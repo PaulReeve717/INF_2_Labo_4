@@ -8,10 +8,12 @@
 
 using namespace std;
 
+
+
 int main() {
 
    {
-      cout << "------------------------------------------------------------" << endl;
+       cout << "------------------------------------------------------------" << endl;
       cout << "Test sur Collection<char, vector> :" << endl;
       try {
          Collection<char, vector> c;
@@ -78,9 +80,10 @@ int main() {
               << noboolalpha;
          {
             //< à compléter 1 >
+
                           // On parcourt la collection en majorant le prix de chacun
                           // des produits de 10%
-                          c.parcourir(/*< à compléter 2 >*/);
+                          c.parcourir(/*< à compléter 2 >*/ /*paramètre de parcourir: 10*/);
             cout << c << " (taille = " << c.taille() << ")" << endl;
          }
          c.vider();
@@ -92,8 +95,11 @@ int main() {
       cout << endl;
    }
 
-   return EXIT_SUCCESS;
-}
+     return EXIT_SUCCESS;
+   }
+
+
+
 
 // ------------------------------------------------------------
 // Test sur Collection<char, vector> :
