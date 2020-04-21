@@ -38,7 +38,7 @@ int main() {
       cout << endl;
    }
 
-   {
+   /*{
       cout << "------------------------------------------------------------" << endl;
       cout << "Test sur Produit :" << endl;
       try {
@@ -83,7 +83,7 @@ int main() {
 
                           // On parcourt la collection en majorant le prix de chacun
                           // des produits de 10%
-                          c.parcourir(/*< à compléter 2 >*/ /*paramètre de parcourir: 10*/);
+                          c.parcourir(*//*< à compléter 2 >*//* *//*paramètre de parcourir: 10*//*);
             cout << c << " (taille = " << c.taille() << ")" << endl;
          }
          c.vider();
@@ -93,7 +93,7 @@ int main() {
       }
       cout << "------------------------------------------------------------" << endl;
       cout << endl;
-   }
+   }*/
 
      return EXIT_SUCCESS;
    }
