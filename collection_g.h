@@ -40,11 +40,11 @@
 #include <iostream>
 #include "exceptions.h"
 
-template<typename T, template<typename, typename=std::allocator<T>> class Container>
+template <typename T, template <typename, typename=std::allocator<T>> class Container>
 class Collection;
 
-template<typename T, template<typename, typename=std::allocator<T>> class Container>
-std::ostream &operator<<(std::ostream &os, const Collection<T, Container> &c) {
+template <typename T, template <typename, typename=std::allocator<T>> class Container>
+std::ostream& operator<<(std::ostream& os, const Collection<T, Container>& c) {
    os << '[';
    for (auto i = c.data.begin(); i != c.data.end(); ++i) {
       if (i != c.data.begin()) {
@@ -56,14 +56,15 @@ std::ostream &operator<<(std::ostream &os, const Collection<T, Container> &c) {
    return os;
 }
 
-template<typename T, template<typename, typename=std::allocator<T>> class Container>
+template <typename T, template <typename, typename=std::allocator<T>> class Container>
 class Collection {
-   friend std::ostream& operator<< <>(std::ostream &os, const Collection<T, Container> &c);
+   friend std::ostream& operator<< <>(
+         std::ostream& os,
+         const Collection<T, Container>& c
+   );
 
 public:
-
-
-   void ajouter(const T &valeur) {
+   void ajouter(const T& valeur) {
       data.push_back(valeur);
    }
 
@@ -73,16 +74,18 @@ public:
 
    T& get(size_t index) {
       if (index >= taille()) {
-         throw IndiceNonValide("Erreur dans Collection::get : \n"
-                               "n doit etre strictement plus petit que collection.size()");
+         throw IndiceNonValide(
+               "Erreur dans Collection::get : \n"
+               "n doit etre strictement plus petit que collection.size()"
+               );
       }
 
       auto it = data.begin();
-      for (size_t i = 0; i != index && it != data.end(); ++i) { ++it; }
+      for (size_t i = 0; i != index && it != data.end(); ++i, ++it);
       return *it;
    }
 
-   bool contient(const T &valeur) const {
+   bool contient(const T& valeur) const {
       return find(data.begin(), data.end(), valeur) != data.end();
    }
 
@@ -93,7 +96,6 @@ public:
    void parcourir(std::function<void(T&)> fn) {
       std::for_each(data.begin(), data.end(), fn);
    }
-
 
 private:
    Container<T> data;

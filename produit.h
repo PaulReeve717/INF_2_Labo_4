@@ -12,7 +12,7 @@
                -  bool operator==(const Produit& lhs, const Produit& rhs);
                   Opérateur de comparaison "==" afin de voir si deux produits sont
                   identiques.
-               -  Produit(unsigned numero, std::string libelle, double prix) :
+               -  Produit(size_t numero, std::string libelle, double prix) :
                   Un constructeur prenant 3 paramètres en entrée : un entier pour le
                   numéro du produit, un string pour le libbelé et un double pour
                   le prix. Si le prix reçu en paramètre est inférieur à 5cts,
@@ -34,7 +34,7 @@
 #include <iostream>
 
 
-class Produit{
+class Produit {
 
    /**
     * Surcharge de l'opérateur sur un flux "<<" afin d'afficher le numéro, le libellé
@@ -87,7 +87,7 @@ public:
    void majoration(double pourcent);
 
 private:
-   unsigned numero;
+   size_t numero;
    std::string libelle;
    double prix;
 };

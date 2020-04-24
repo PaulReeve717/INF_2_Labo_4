@@ -29,6 +29,11 @@
                Les constructeurs de la classe PrixNonValide sont utilisés dans la
                classe Produit lorsque le prix d'un produit est mis à une valeur
                inférieur à 5cts.
+
+               Dans le cadre de ce labo, on utilise que le constructeur const char*
+               Mais nous avons decidé de garder quand même le constructeur
+               const string*
+
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */
@@ -39,17 +44,18 @@
 #include <string>
 #include <stdexcept> // logic_error
 
-class IndiceNonValide : public std::logic_error
-{
+class IndiceNonValide : public std::logic_error {
 public:
    explicit IndiceNonValide(const std::string& s);
+
    explicit IndiceNonValide(const char* s);
 };
 
-class PrixNonValide : public std::logic_error
-{
+class PrixNonValide : public std::logic_error {
 public:
    explicit PrixNonValide(const std::string& s);
+
    explicit PrixNonValide(const char* s);
 };
+
 #endif //INF_2_LABO_4_EXCEPTIONS_H

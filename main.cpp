@@ -78,10 +78,12 @@ int main() {
               << noboolalpha;
          {
             //< à compléter 1 >
-            auto FNmajoration = [](Produit& p){ p.majoration(10);};
-                          // On parcourt la collection en majorant le prix de chacun
-                          // des produits de 10%
-                          c.parcourir(FNmajoration);
+            auto FnMajoration = [](Produit& p){
+               p.majoration(10);
+            };
+           // On parcourt la collection en majorant le prix de chacun
+           // des produits de 10%
+           c.parcourir(FnMajoration);
             cout << c << " (taille = " << c.taille() << ")" << endl;
          }
          c.vider();
