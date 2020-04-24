@@ -43,6 +43,13 @@
 template <typename T, template <typename, typename=std::allocator<T>> class Container>
 class Collection;
 
+/**
+    * Surcharge de l'opérateur sur un flux "<<" afin d'afficher une collection
+    *
+    * @param os  : Flux sur lequel on veut écrire
+    * @param c  : Collection qu'on souhaite afficher
+    * @return     : Flux sur lequel on écrit
+    */
 template <typename T, template <typename, typename=std::allocator<T>> class Container>
 std::ostream& operator<<(std::ostream& os, const Collection<T, Container>& c) {
    os << '[';
@@ -64,14 +71,28 @@ class Collection {
    );
 
 public:
+    /**
+     * Ajoute un objet de type T au bout de la Collection
+     * @param valeur L'objet à ajouter
+     */
    void ajouter(const T& valeur) {
       data.push_back(valeur);
    }
 
+   /**
+    * Renvoie la taille de la Collection
+    * @return taille de la
+    */
    size_t taille() const {
       return (size_t) distance(data.begin(), data.end());
    }
 
+   /**
+    * Retourne une référence à l'élément de la Collection
+    * étant à l'emplacement index
+    * @param index l'index de l'élément voulu
+    * @return référence à l'élément voulu
+    */
    T& get(size_t index) {
       if (index >= taille()) {
          throw IndiceNonValide(
@@ -85,14 +106,26 @@ public:
       return *it;
    }
 
+   /**
+    * Renvoie vrai si l'élément cherché est dans la Collection, faux si non
+    * @param valeur élément à chercher
+    * @return true si trouvé, false si non
+    */
    bool contient(const T& valeur) const {
       return find(data.begin(), data.end(), valeur) != data.end();
    }
 
+   /**
+    * Enlève tous les éléments de la Collection
+    */
    void vider() {
       data.clear();
    }
 
+   /**
+    * Effectue une fonction sur chaque élément de la collection
+    * @param fn la fonction à appliquer
+    */
    void parcourir(std::function<void(T&)> fn) {
       std::for_each(data.begin(), data.end(), fn);
    }
