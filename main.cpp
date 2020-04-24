@@ -8,12 +8,10 @@
 
 using namespace std;
 
-
-
 int main() {
 
    {
-       cout << "------------------------------------------------------------" << endl;
+      cout << "------------------------------------------------------------" << endl;
       cout << "Test sur Collection<char, vector> :" << endl;
       try {
          Collection<char, vector> c;
@@ -38,7 +36,7 @@ int main() {
       cout << endl;
    }
 
-   /*{
+   {
       cout << "------------------------------------------------------------" << endl;
       cout << "Test sur Produit :" << endl;
       try {
@@ -80,10 +78,10 @@ int main() {
               << noboolalpha;
          {
             //< à compléter 1 >
-
+            auto FNmajoration = [](Produit& p){ p.majoration(10);};
                           // On parcourt la collection en majorant le prix de chacun
                           // des produits de 10%
-                          c.parcourir(*//*< à compléter 2 >*//* *//*paramètre de parcourir: 10*//*);
+                          c.parcourir(FNmajoration);
             cout << c << " (taille = " << c.taille() << ")" << endl;
          }
          c.vider();
@@ -93,13 +91,10 @@ int main() {
       }
       cout << "------------------------------------------------------------" << endl;
       cout << endl;
-   }*/
-
-     return EXIT_SUCCESS;
    }
 
-
-
+   return EXIT_SUCCESS;
+}
 
 // ------------------------------------------------------------
 // Test sur Collection<char, vector> :
@@ -130,5 +125,3 @@ int main() {
 // [(2, "Produit 2", 5.50), (1, "Produit 1", 1.71)] (taille = 2)
 // [] (taille = 0)
 // ------------------------------------------------------------
-
-
